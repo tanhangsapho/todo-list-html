@@ -38,13 +38,23 @@ function deleteTodo(id) {
 
 function filterTodos(filter) {
   currentFilter = filter;
+  localStorage.setItem("currentFilter", currentFilter); // Save to localStorage
+
+  // Remove active class from all buttons
   document.querySelectorAll(".filter-btn").forEach((btn) => {
     btn.classList.remove("active");
-    if (btn.textContent.toLowerCase() === filter) {
-      btn.classList.add("active");
-    }
   });
-  renderTodos();
+
+  // Add active class to the clicked button
+  const clickedButton = document.querySelector(
+    `.filter-btn[data-filter="${filter}"]`
+  );
+  if (clickedButton) {
+    clickedButton.classList.add("active");
+    console.log(`Active button set to: ${filter}`);
+  }
+
+  renderTodos(); // Render todos based on the selected filter
 }
 
 function renderTodos() {
@@ -67,13 +77,13 @@ function renderTodos() {
     const li = document.createElement("li");
     li.className = `todo-item ${todo.completed ? "completed" : ""}`;
     li.innerHTML = `
-                    <div class="checkbox-wrapper">
-                        <input type="checkbox" class="todo-checkbox" 
-                            ${todo.completed ? "checked" : ""}>
-                        <span class="todo-text">${todo.text}</span>
-                    </div>
-                    <button class="delete-btn">Delete</button>
-                `;
+                      <div class="checkbox-wrapper">
+                          <input type="checkbox" class="todo-checkbox" 
+                              ${todo.completed ? "checked" : ""}>
+                          <span class="todo-text">${todo.text}</span>
+                      </div>
+                      <button class="delete-btn">Delete</button>
+                  `;
 
     // Add event listeners
     const checkbox = li.querySelector(".todo-checkbox");

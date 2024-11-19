@@ -15,14 +15,26 @@
         <button onclick="addTodo()">Add</button>
       </div>
 
-      <div class="filters">
-        <button class="filter-btn active" onclick="filterTodos('all')">
+      <div class="filter">
+        <button
+          class="filter-btn active"
+          data-filter="all"
+          onclick="filterTodos('all')"
+        >
           All
         </button>
-        <button class="filter-btn" onclick="filterTodos('active')">
+        <button
+          class="filter-btn"
+          data-filter="active"
+          onclick="filterTodos('active')"
+        >
           Active
         </button>
-        <button class="filter-btn" onclick="filterTodos('completed')">
+        <button
+          class="filter-btn"
+          data-filter="completed"
+          onclick="filterTodos('completed')"
+        >
           Completed
         </button>
       </div>

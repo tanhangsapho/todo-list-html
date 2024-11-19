@@ -67,10 +67,22 @@ button:hover {
   background: transparent;
   border: 2px solid #f6d365;
   color: #333;
+  min-width: 80px;
+}
+.filter-btn.active {
+  background-color: #f6d365 !important;
+  border-color: #f6d365;
+  color: white;
 }
 
-.filter-btn.active {
+.filter-btn:hover:not(.active) {
   background: #f6d365;
+  opacity: 0.8;
+}
+
+.filter-btn:hover {
+  background: #f6d365;
+  opacity: 0.8;
 }
 
 #todoList {
